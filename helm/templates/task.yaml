@@ -1,0 +1,16 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: stakater-unit-test
+  labels:
+    app.kubernetes.io/version: "{{ .Chart.Version }}"
+spec:
+  steps:
+    - image: 'maven:3.8.6-openjdk-11-slim'
+      name: test
+      script: |
+        mvn clean test
+      workingDir: $(workspaces.source.path)
+  workspaces:
+    - name: source
+    

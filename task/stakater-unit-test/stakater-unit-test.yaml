@@ -1,0 +1,17 @@
+---
+# Source: stakater-unit-test/templates/task.yaml
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: stakater-unit-test
+  labels:
+    app.kubernetes.io/version: "0.0.6"
+spec:
+  steps:
+    - image: 'maven:3.8.6-openjdk-11-slim'
+      name: test
+      script: |
+        mvn clean test
+      workingDir: $(workspaces.source.path)
+  workspaces:
+    - name: source

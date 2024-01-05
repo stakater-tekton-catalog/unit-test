@@ -1,2 +1,15 @@
-# unit-test
-A tekton task for unit-test
+# Stakater Cluster Task for Trivy Scan
+
+## Local Development
+
+### Install
+
+```
+tilt up
+```
+
+### Teardown
+
+```
+tilt down
+```
